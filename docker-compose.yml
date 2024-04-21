@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: ess
+    environment:
+      POSTGRES_DB: xsolar-backend
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:  #Please fill in password: admin
+    ports:
+      - "9669:9669"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data #Please add the specific path for the volumnes postgres data
+      - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql  # Mount the SQL script
